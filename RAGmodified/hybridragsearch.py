@@ -100,8 +100,6 @@ hybrid_rerank_retriever = ContextualCompressionRetriever(
 
 
 
-
-
 # -----------------------------
 # LLM
 # -----------------------------
