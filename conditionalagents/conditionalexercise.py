@@ -1,7 +1,7 @@
 from typing import Literal, TypedDict
 from pathlib import Path
 
-from IPython.display import Image, display
+# from IPython.display import Image, display
 from langgraph.graph import END, START, StateGraph
 
 class AgentState(TypedDict):
@@ -104,11 +104,11 @@ app = graph.compile()
 
 
 
-diagram_path = Path(__file__).with_name("conditionalexercise_graph.png")
-diagram_path.write_bytes(app.get_graph().draw_mermaid_png())
-print(app.get_graph().draw_mermaid())
-display(Image(filename=str(diagram_path)))
-print(f"Graph diagram saved to: {diagram_path.resolve()}")
+# diagram_path = Path(__file__).with_name("conditionalexercise_graph.png")
+# diagram_path.write_bytes(app.get_graph().draw_mermaid_png())
+# print(app.get_graph().draw_mermaid())
+# display(Image(filename=str(diagram_path)))
+# print(f"Graph diagram saved to: {diagram_path.resolve()}")
 
 
 
