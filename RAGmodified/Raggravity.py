@@ -158,6 +158,8 @@ def build_rag_app(pdf_path: Path):
         response = bound_llm.invoke(messages)
         return {"messages": [response]}
 
+
+
     def should_continue(state: State) -> str:
         last_message = state["messages"][-1]
         if getattr(last_message, "tool_calls", None):

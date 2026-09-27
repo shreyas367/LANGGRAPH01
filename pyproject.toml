@@ -19,4 +19,7 @@ dependencies = [
     "rank-bm25>=0.2.2",
     "sentence-transformers>=5.7.0",
     "tokenizers==0.22.1",
+    "langchain-nvidia-ai-endpoints>=1.4.3",
+    "openai>=3.8.0",
+    "litellm>=1.83.0",
 ]
