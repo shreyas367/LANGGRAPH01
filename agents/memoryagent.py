@@ -31,7 +31,7 @@ def process(state: AgentState) -> dict:
     """Generates the AI response and returns it to be merged into state."""
     response = llm_groq.invoke(state["messages"])
     return {"messages": [response]}
-
+  
 
 
 # Build Graph

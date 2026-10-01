@@ -44,7 +44,6 @@ graph.add_node("routernode",lambda state:state)
 
 
 
-# edge adding
 graph.add_edge(START,"routernode")
 
 

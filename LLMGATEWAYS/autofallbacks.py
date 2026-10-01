@@ -10,6 +10,7 @@ prompt = "What is an LLM gateway in 3 bullets points only?"
 
 
 start_time = time.time()
+
 response1 = completion(
     model="groq/openai/gpt-oss-20b",
     messages=[{"role": "user", "content": prompt}],
