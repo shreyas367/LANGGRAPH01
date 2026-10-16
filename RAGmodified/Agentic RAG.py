@@ -182,9 +182,9 @@ def build_rag_app(pdf_path: Path):
 
 
 
-# -----------------------------
+# ---------------------------
 # 5. Interactive CLI
-# -----------------------------
+# ---------------------------
 def main():
     print("=" * 60)
     print("  General-Purpose Hybrid Agentic RAG (FlashRank + BM25 + FAISS)")
@@ -195,7 +195,6 @@ def main():
         if raw_input_path.lower() == "exit":
             return
 
-        # Strip surrounding quotes (common when dragging files into Windows terminal)
         cleaned_path = raw_input_path.strip('\'"')
         pdf_path = Path(cleaned_path).expanduser().resolve()
 
@@ -208,7 +207,6 @@ def main():
 
         break
 
-    # Build the application for this specific PDF
     app, doc_title = build_rag_app(pdf_path)
 
     print(f"\n✅ Ready! Ask questions about '{doc_title}'.")
@@ -224,7 +222,7 @@ def main():
             print("Goodbye!")
             break
         if user_query.lower() == "switch":
-            # Recurse to switch document
+            
             main()
             return
 
