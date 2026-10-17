@@ -22,7 +22,7 @@ from langgraph.prebuilt import ToolNode
 load_dotenv()
 
 # -----------------------------
-# 1. Models & Embeddings Setup
+#  Models & Embeddings Setup
 # -----------------------------
 embeddings = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2"
@@ -38,7 +38,7 @@ llm = ChatGroq(
 
 
 # -----------------------------
-# 2. Document Ingestion & Caching
+#  Document Ingestion & Caching
 # -----------------------------
 def get_or_create_index(pdf_path: Path, base_index_dir: Path = Path("faiss_indexes")):
     """
@@ -151,7 +151,7 @@ def build_rag_app(pdf_path: Path):
             )
         )
         messages = state["messages"]
-        # Prepend system message if not already present
+       
         if not messages or not isinstance(messages[0], SystemMessage):
             messages = [system_message, *messages]
 
@@ -199,17 +199,17 @@ def main():
         pdf_path = Path(cleaned_path).expanduser().resolve()
 
         if not pdf_path.exists():
-            print(f"❌ File not found at: {pdf_path}. Please try again.")
+            print(f"File not found at: {pdf_path}. Please try again.")
             continue
         if pdf_path.suffix.lower() != ".pdf":
-            print(f"❌ '{pdf_path.name}' is not a PDF file. Please provide a .pdf file.")
+            print(f"'{pdf_path.name}' is not a PDF file. Please provide a .pdf file.")
             continue
 
         break
 
     app, doc_title = build_rag_app(pdf_path)
 
-    print(f"\n✅ Ready! Ask questions about '{doc_title}'.")
+    print(f"\nReady! Ask questions about '{doc_title}'.")
     print("Type 'exit' to quit or 'switch' to load another PDF.\n")
 
     config = {"configurable": {"thread_id": "cli_session"}}
