@@ -29,7 +29,6 @@ print("Time taken for first call:", end_time - start_time)
 
 
 
-print("======================================================")
 print("Calling the same prompt again to check caching...")
 start_time = time.time()
 response2 = completion(
