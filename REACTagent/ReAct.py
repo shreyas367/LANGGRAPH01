@@ -11,7 +11,6 @@ from langgraph.prebuilt import ToolNode
 
 load_dotenv()
 
-# Initialize LLM
 llm = ChatMistralAI(
     model="mistral-small-latest",
     temperature=0.7,
@@ -68,7 +67,6 @@ def should_continue(state: AgentState) -> str:
 
 
 
-# Build Graph
 graph = StateGraph(AgentState)
 
 graph.add_node("ouragent", model_call)
@@ -98,7 +96,6 @@ def print_stream(stream):
 
 
 
-# Pass messages using HumanMessage 
 input_data = {"messages": [HumanMessage(content="add 55+77  also add 99+77 then multiply for final result  ,, tell two good jokes")]}
 
 
