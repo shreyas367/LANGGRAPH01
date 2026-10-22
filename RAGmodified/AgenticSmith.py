@@ -170,7 +170,7 @@ def get_or_create_index(
 
     text_splitter = RecursiveCharacterTextSplitter(
 
-        chunk_size=700,
+        chunk_size=450,
 
         chunk_overlap=150,
 
