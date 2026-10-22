@@ -50,7 +50,7 @@ class AgentState(TypedDict):
 # Node: Call Model
 def model_call(state: AgentState) -> dict:
     system_prompt = SystemMessage(content="You are a helpful AI assistant.")
-    # Invoke bound model with history
+    
     response = llm_with_tools.invoke([system_prompt] + list(state["messages"]))
     return {"messages": [response]}
 

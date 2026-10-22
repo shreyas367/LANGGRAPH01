@@ -3,6 +3,7 @@ import pickle
 import hashlib
 from pathlib import Path
 from typing import Annotated, TypedDict
+import numpy as np
 
 from dotenv import load_dotenv
 from langchain_classic.retrievers import (
@@ -156,12 +157,27 @@ def create_hybrid_retriever(vectorstore: FAISS, chunks: list[Document]):
     )
 
 
+def sanitize_for_serialization(val):
+    if isinstance(val, np.generic):
+        return val.item()
+    if isinstance(val, np.ndarray):
+        return val.tolist()
+    if isinstance(val, dict):
+        return {str(k): sanitize_for_serialization(v) for k, v in val.items()}
+    if isinstance(val, (list, tuple)):
+        return [sanitize_for_serialization(v) for v in val]
+    return val
+
+
 def doc_to_dict(doc: Document | dict) -> dict:
     if isinstance(doc, dict):
-        return doc
+        return {
+            "page_content": doc.get("page_content", ""),
+            "metadata": sanitize_for_serialization(doc.get("metadata", {})),
+        }
     return {
         "page_content": getattr(doc, "page_content", ""),
-        "metadata": getattr(doc, "metadata", {}),
+        "metadata": sanitize_for_serialization(getattr(doc, "metadata", {})),
     }
 
 
