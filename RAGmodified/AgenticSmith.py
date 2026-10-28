@@ -537,6 +537,8 @@ def build_rag_app(pdf_path: Path):
             "grade_feedback": grade_text.strip(),
 
         }
+
+
     @traceable(name="node_generate_answer", run_type="chain")
 
     def generate_answer(state: State) -> dict:
